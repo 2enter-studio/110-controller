@@ -1,16 +1,22 @@
 import midi from 'midi';
 import { actions } from './Action';
 import { file_manager } from '$lib/server/FileManager';
+import { MIDI_NAME } from '$env/static/private';
 
 export class MidiInput {
 	private input = new midi.Input();
+	midi_index = 0;
 
 	constructor() {
 		const port_count = this.input.getPortCount();
 		console.log(`Port Count: ${port_count}`);
 		console.log('Port Names: ');
 		for (let i = 0; i < port_count; i++) {
-			console.log(`${i}: ${this.input.getPortName(i)}`);
+			const name = this.input.getPortName(i);
+			console.log(`${i}: ${name}`);
+			if (name === MIDI_NAME) {
+				this.midi_index = i;
+			}
 		}
 	}
 
@@ -28,7 +34,7 @@ export class MidiInput {
 		});
 
 		if (this.input.getPortCount() > 0) {
-			this.input.openPort(0);
+			this.input.openPort(this.midi_index);
 		}
 	}
 }
