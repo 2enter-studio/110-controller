@@ -2,7 +2,7 @@ import { Client, Message, Server } from 'node-osc';
 import 'dotenv/config';
 import type { OscTarget } from './types';
 import { get_target_ip } from './config';
-import { OSC_SERVER_PORT } from '$env/static/private';
+import { OSC_SERVER_IP } from '$env/static/private';
 
 export class OscClient {
 	readonly #client: Client;
@@ -17,19 +17,24 @@ export class OscClient {
 		this.#client = new Client(addr, port);
 	}
 
-	send(addr: string, msg: string) {
+	send(addr: string, msg: number) {
+		if (addr === '') return;
 		this.#client.send([addr, msg], () => {
 			console.log(`Sent osc message to ${this.#target} ${addr} ${msg}`);
+			this.close();
 		});
+	}
+	close() {
+		this.#client.close();
 	}
 }
 
 export class OscServer {
 	server: Server;
-	#port = parseInt(OSC_SERVER_PORT as string);
+	#port = parseInt((OSC_SERVER_IP as string).split(':')[1]);
 
 	constructor() {
-		this.server = new Server(this.#port, '0.0.0.0', () => {
+		this.server = new Server(this.#port, 'localhost', () => {
 			console.log(`OSC Server start listening on port ${this.#port}`);
 		});
 	}

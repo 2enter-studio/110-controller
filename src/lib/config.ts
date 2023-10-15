@@ -1,11 +1,18 @@
-import { THIS_ARENA_IP, NEXT_ARENA_IP, MAX_MSP_IP, LIGHT_GUY_IP } from '$env/static/private';
+import {
+	THIS_ARENA_IP,
+	NEXT_ARENA_IP,
+	MAX_MSP_IP,
+	LIGHT_GUY_IP,
+	OSC_SERVER_IP
+} from '$env/static/private';
 import { ActionTypes, OscTarget } from '$lib/types';
+import { log } from 'console';
 
 export const new_action = () => {
 	return {
 		id: generate_id(),
 		name: 'new',
-		type: ActionTypes.Trigger,
+		type: ActionTypes.SendValue,
 		mid: 0,
 		osc: [],
 		description: ''
@@ -31,8 +38,10 @@ export function get_target_ip(target: OscTarget): string {
 			return NEXT_ARENA_IP as string;
 		case OscTarget.Max:
 			return MAX_MSP_IP as string;
-		case OscTarget.Remote:
+		case OscTarget.LightGuy:
 			return LIGHT_GUY_IP as string;
+		case OscTarget.Server:
+			return OSC_SERVER_IP as string;
 		default:
 			return '';
 	}

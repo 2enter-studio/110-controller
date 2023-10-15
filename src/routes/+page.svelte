@@ -12,10 +12,20 @@
 
 	let editing: string = '';
 	let loading_dot: number = 0;
+
 	setInterval(() => {
 		if (loading_dot === 3) loading_dot = 0;
 		else loading_dot++;
 	}, 100);
+
+	$: description = () => {
+		const midi = state.midi;
+		if (configs) {
+			return configs.find((con) => con.mid === midi)?.description;
+		} else {
+			return '';
+		}
+	};
 </script>
 
 <div class="flex flex-row">
@@ -45,12 +55,15 @@
 			</form>
 		{/if}
 	</div>
-	<div id="state" class="w-[60vw] h-screen flex justify-center items-center text-8xl">
+	<div id="state" class="w-[60vw] h-screen flex flex-col justify-center items-center text-8xl">
 		<div
 			style="width: {state.strength / 2}vh; height: {state.strength / 2}vh"
-			class="bg-black flex justify-center items-center rounded-full"
+			class="bg-black flex flex-col justify-center items-center rounded-full"
 		>
 			{state.midi}
 		</div>
+		<p class="text-xl">
+			{description()}
+		</p>
 	</div>
 </div>

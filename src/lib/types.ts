@@ -1,14 +1,14 @@
 export enum ActionTypes {
-	Trigger = 'trigger',
-	Run = 'run'
+	SendValue = 'send_value',
+	Trigger = 'trigger'
 }
 
 export enum OscTarget {
 	Me = 'local_arena',
 	Bro = 'next_arena',
 	Max = 'max_msp',
-	Remote = 'light_guy',
-	server = 'server'
+	LightGuy = 'light_guy',
+	Server = 'server'
 }
 
 export type TAction = {
