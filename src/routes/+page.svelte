@@ -10,7 +10,7 @@
 		strength: 0
 	};
 
-	let editing: number = 0;
+	let editing: string = '';
 	let loading_dot: number = 0;
 	setInterval(() => {
 		if (loading_dot === 3) loading_dot = 0;
@@ -30,11 +30,11 @@
 		{:else}
 			{#each configs as config}
 				<div class="flex flex-col items-end">
-					{#if config.mid === editing}
+					{#if config.id === editing}
 						<ConfigEditor {config} />
 					{:else}
 						<ConfigViewer {config} />
-						<button class="btn btn-accent w-[20%]" on:click={() => (editing = config.mid)}>
+						<button class="btn btn-accent w-[20%]" on:click={() => (editing = config.id)}>
 							Edit me!
 						</button>
 					{/if}
