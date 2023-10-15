@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import type { TAction, TState } from '../types';
+import { generate_id } from '$lib/config';
 
 const data_path = 'data';
 const config_path = [data_path, 'config.json'].join('/');
@@ -31,6 +32,12 @@ class FileManager {
 		const index = current_config.findIndex((action: TAction) => {
 			return action.id === config.id;
 		});
+
+		for (let i = 0; i < current_config.length; i++) {
+			if (!current_config[i].id) {
+				current_config[i].id = generate_id();
+			}
+		}
 
 		if (index === -1) {
 			current_config.push(config);
