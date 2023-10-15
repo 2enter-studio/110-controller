@@ -1,6 +1,6 @@
 import { Client, Message, Server } from 'node-osc';
 import 'dotenv/config';
-import type { OscTarget } from './config';
+import type { OscTarget } from './types';
 import { get_target_ip } from './config';
 import { OSC_SERVER_PORT } from '$env/static/private';
 
@@ -21,10 +21,6 @@ export class OscClient {
 		this.#client.send([addr, msg], () => {
 			console.log(`Sent osc message to ${this.#target} ${addr} ${msg}`);
 		});
-	}
-
-	private to_msg(msg_str: string): Message {
-		return new Message(msg_str);
 	}
 }
 
