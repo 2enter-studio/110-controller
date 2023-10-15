@@ -6,8 +6,12 @@ export class MidiInput {
 	private input = new midi.Input();
 
 	constructor() {
-		console.log('input.getPortCount()', this.input.getPortCount());
-		console.log('input.getPortName(0)', this.input.getPortName(0));
+		const port_count = this.input.getPortCount();
+		console.log(`Port Count: ${port_count}`);
+		console.log('Port Names: ');
+		for (let i = 0; i < port_count; i++) {
+			console.log(`${i}: ${this.input.getPortName(i)}`);
+		}
 	}
 
 	start() {
