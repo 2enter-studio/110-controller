@@ -3,5 +3,5 @@ import { file_manager } from '$lib/server/FileManager';
 import { json } from '@sveltejs/kit';
 
 export const GET: RequestHandler = () => {
-	return json(file_manager.get_config());
+	return json(file_manager.get_config().sort((a, b) => a.mid - b.mid));
 };

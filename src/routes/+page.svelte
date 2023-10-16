@@ -58,7 +58,9 @@
 	<div id="state" class="w-[60vw] h-screen flex flex-col justify-center items-center text-8xl">
 		<div
 			style="width: {state.strength / 2}vh; height: {state.strength / 2}vh"
-			class="bg-black flex flex-col justify-center items-center rounded-full"
+			class="{description()
+				? 'bg-red-500'
+				: 'bg-black'} flex flex-col justify-center items-center rounded-full"
 		>
 			{state.midi}
 		</div>
