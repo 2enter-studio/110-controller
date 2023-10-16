@@ -6,7 +6,7 @@ import { log } from 'console';
 
 export class MidiInput {
 	private input = new midi.Input();
-	midi_index = 0;
+	midi_index: number = 100;
 
 	constructor() {
 		const port_count = this.input.getPortCount();
@@ -43,7 +43,7 @@ export class MidiInput {
 			}
 		});
 
-		if (this.input.getPortCount() > 0) {
+		if (this.input.getPortCount() > 0 && this.midi_index !== 100) {
 			try {
 				this.input.openPort(this.midi_index);
 				log('MIDI Port opened!');

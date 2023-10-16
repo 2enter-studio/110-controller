@@ -27,13 +27,13 @@ class Action {
 	}
 }
 
-export const actions: Action[] = [];
+export let actions: Action[] = [];
 
-for (const action_info of config) {
-	for (const osc_info of action_info.osc) {
-		const action = new Action(action_info as TAction);
-		actions.push(action);
+setInterval(() => {
+	for (const action_info of config) {
+		for (const osc_info of action_info.osc) {
+			const action = new Action(action_info as TAction);
+			actions.push(action);
+		}
 	}
-}
-
-// log(JSON.stringify(actions, null, 3));
+}, 500);
