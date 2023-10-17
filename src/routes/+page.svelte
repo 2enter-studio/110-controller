@@ -21,7 +21,7 @@
 	$: description = () => {
 		const midi = state.midi;
 		if (configs) {
-			return configs.find((con) => con.mid === midi)?.description;
+			return configs.find((con) => con.mid === midi)?.description as string;
 		} else {
 			return '';
 		}
@@ -55,17 +55,27 @@
 			</form>
 		{/if}
 	</div>
-	<div id="state" class="w-[60vw] h-screen flex flex-col justify-center items-center text-8xl">
+	<div
+		id="state"
+		class="w-[60vw] h-screen flex flex-col justify-center items-center text-8xl text-center gap-3"
+	>
 		<div
-			style="width: {state.strength / 2}vh; height: {state.strength / 2}vh"
-			class="{description()
-				? 'bg-red-500'
-				: 'bg-black'} flex flex-col justify-center items-center rounded-full"
+			class="text-white rounded-full border-2 border-dashed flex justify-center items-center"
+			style="width: {127 / 3 + 1}vh; height:{127 / 3 + 1}vh;"
 		>
-			{state.midi}
+			<div
+				style="width: {state.strength / 3}vh; height: {state.strength / 3}vh"
+				class="{description()
+					? description().includes('調整')
+						? 'bg-red-500'
+						: 'bg-yellow-600'
+					: 'bg-black'} flex flex-col justify-center items-center rounded-full"
+			>
+				{state.midi}
+				<p class="text-xl w-[60vw] bg-black/80">
+					{description()}
+				</p>
+			</div>
 		</div>
-		<p class="text-xl">
-			{description()}
-		</p>
 	</div>
 </div>
