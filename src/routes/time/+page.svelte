@@ -1,17 +1,21 @@
 <script lang="ts">
 	import type { TState } from '$lib/types';
 	import { onMount } from 'svelte';
+	import NodeJS from 'node:process';
 
 	const max_second = 370;
 
 	let second = 0;
-	let start: boolean = false;
 
 	let wait_interval: NodeJS.Timeout;
 	let count_interval: NodeJS.Timeout;
 
+	let init_time: number = 0;
+
 	onMount(() => {
 		wait_interval = new_wait_interval();
+		count_interval = new_count_interval();
+		// console.log(new Date().getTime());
 	});
 
 	const new_wait_interval = () => {
@@ -19,32 +23,16 @@
 			const state: TState = await fetch('/api/state')
 				.then((res) => res.json())
 				.catch((e) => console.log(e));
-			if (state.midi === 41 && state.strength > 0) {
-				console.log('Start!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-				start = true;
-				second = 0;
-				if (!count_interval) {
-					count_interval = new_count_interval();
-				}
-				// clearInterval(wait_interval);
-			} else {
-				console.log(state);
-			}
-		}, 100);
+
+			init_time = state.start;
+		}, 1000);
 	};
 
 	const new_count_interval = () => {
 		const update_sec = 0.2;
 		return setInterval(() => {
-			if (start) {
-				second += update_sec;
-			}
-			if (second >= max_second) {
-				start = false;
-				second = 0;
-				// wait_interval = new_wait_interval();
-				clearInterval(count_interval);
-			}
+			second = (new Date().getTime() - init_time) / 1000;
+			if (second > max_second) second = 0;
 		}, update_sec * 1000);
 	};
 

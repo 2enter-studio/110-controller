@@ -20,21 +20,7 @@ class FileManager {
 
 	set_state(state: TState) {
 		const old_state = this.get_state();
-		const count = state.count === -1 ? old_state.count : state.count;
-		state.count = count;
-		fs.writeFileSync(state_path, JSON.stringify(state, null, 4));
-	}
-
-	add_count(num: number): number {
-		const state = this.get_state();
-		state.count = parseFloat((state.count + num).toFixed(1));
-		fs.writeFileSync(state_path, JSON.stringify(state, null, 4));
-		return state.count;
-	}
-
-	clear_count() {
-		const state = this.get_state();
-		state.count = 0;
+		state.start = state.start === -1 ? old_state.start : state.start;
 		fs.writeFileSync(state_path, JSON.stringify(state, null, 4));
 	}
 

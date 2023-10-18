@@ -21,7 +21,7 @@ export type TAction = {
 };
 
 export type TState = {
-	count: number;
+	start: number;
 	midi: number;
 	strength: number;
 };

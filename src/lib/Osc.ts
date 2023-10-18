@@ -1,4 +1,4 @@
-import { Client, Message, Server } from 'node-osc';
+import { Client, Server } from 'node-osc';
 import 'dotenv/config';
 import type { OscTarget } from './types';
 import { get_target_ip } from './config';
