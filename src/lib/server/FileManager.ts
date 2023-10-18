@@ -14,11 +14,27 @@ class FileManager {
 			console.log(`FileManager: Created file: ${data_path}`);
 		}
 	}
-	get_state() {
+	get_state(): TState {
 		return JSON.parse(fs.readFileSync(state_path, 'utf8'));
 	}
 
 	set_state(state: TState) {
+		const old_state = this.get_state();
+		const count = state.count === -1 ? old_state.count : state.count;
+		state.count = count;
+		fs.writeFileSync(state_path, JSON.stringify(state, null, 4));
+	}
+
+	add_count(num: number): number {
+		const state = this.get_state();
+		state.count = parseFloat((state.count + num).toFixed(1));
+		fs.writeFileSync(state_path, JSON.stringify(state, null, 4));
+		return state.count;
+	}
+
+	clear_count() {
+		const state = this.get_state();
+		state.count = 0;
 		fs.writeFileSync(state_path, JSON.stringify(state, null, 4));
 	}
 

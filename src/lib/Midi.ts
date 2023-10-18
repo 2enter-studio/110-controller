@@ -2,7 +2,8 @@ import midi from 'midi';
 import { actions } from './Action';
 import { file_manager } from '$lib/server/FileManager';
 import { MIDI_NAME } from '$env/static/private';
-import { log } from 'console';
+
+let start = false;
 
 export class MidiInput {
 	private input = new midi.Input();
@@ -26,13 +27,17 @@ export class MidiInput {
 			const channel = msg[1];
 			const strength = msg[2];
 			// console.log('message received', dt, msg);
-			file_manager.set_state({ midi: channel, strength });
+			file_manager.set_state({ midi: channel, strength, count: -1 });
 
 			for (const action of actions) {
 				if (action.action.mid === channel) {
 					const type = action.action.type;
 					switch (type) {
 						case 'trigger':
+							if (action.action.name === 'start') {
+								// file_manager.clear_count();
+								start = true;
+							}
 							action.trigger();
 							break;
 						case 'send_value':
@@ -46,12 +51,12 @@ export class MidiInput {
 		if (this.input.getPortCount() > 0 && this.midi_index !== 100) {
 			try {
 				this.input.openPort(this.midi_index);
-				log('MIDI Port opened!');
+				console.log('MIDI Port opened!');
 			} catch (e) {
 				this.input.closePort();
-				log(e);
+				console.log(e);
 				this.input.openPort(this.midi_index);
-				log('MIDI Port opened!');
+				console.log('MIDI Port opened!');
 			}
 		}
 	}

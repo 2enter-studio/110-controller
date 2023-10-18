@@ -11,6 +11,7 @@ const target_types = Object.values(OscTarget);
 midi_input.start();
 osc_server.start();
 
+console.log('Requesting...');
 const update: Action = async ({ request }) => {
 	const data = await request.formData();
 

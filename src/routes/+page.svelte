@@ -7,7 +7,8 @@
 	let configs: TAction[];
 	let state: TState = {
 		midi: 0,
-		strength: 0
+		strength: 0,
+		count: 0
 	};
 
 	let editing: string = '';
