@@ -1,7 +1,7 @@
 import midi from 'midi';
 import { actions } from './Action';
-import { file_manager } from '$lib/server/FileManager';
 import { MIDI_NAME } from '$env/static/private';
+import { set_midi, set_start } from './state';
 
 export class MidiInput {
 	private input = new midi.Input();
@@ -25,7 +25,7 @@ export class MidiInput {
 			const channel = msg[1];
 			const strength = msg[2];
 			// console.log('message received', dt, msg);
-			file_manager.set_state({ midi: channel, strength, start: -1 });
+			set_midi(channel, strength);
 
 			for (const action of actions) {
 				if (action.action.mid === channel) {
@@ -33,8 +33,11 @@ export class MidiInput {
 					switch (type) {
 						case 'trigger':
 							if (action.action.name === 'start') {
-								// file_manager.clear_count();
-								file_manager.set_state({ midi: channel, strength, start: new Date().getTime() });
+								set_start(new Date().getTime());
+								// for (const tri_action of ['tri_1', 'tri_2', 'tri_3', 'tri_4', 'noise']) {
+								// 	const act = actions.find((action) => action.action.name === tri_action);
+								// 	act?.trigger();
+								// }
 							}
 							action.trigger();
 							break;
@@ -61,12 +64,3 @@ export class MidiInput {
 }
 
 export const midi_input = new MidiInput();
-
-await new Promise((resolve) => {
-	setTimeout(resolve, 3000);
-});
-file_manager.set_state({ midi: 41, strength: 33, start: new Date().getTime() });
-await new Promise((resolve) => {
-	setTimeout(resolve, 8000);
-});
-file_manager.set_state({ midi: 41, strength: 33, start: new Date().getTime() });

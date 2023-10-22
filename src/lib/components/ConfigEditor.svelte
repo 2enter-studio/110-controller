@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { generate_id } from '$lib/types';
 	import type { TAction } from '$lib/types';
 	import { ActionTypes, OscTarget } from '$lib/types';
 
@@ -9,11 +10,12 @@
 
 	export let config: TAction;
 	const elements = [
-		{ id: 'id', name: 'id', value: config.id },
-		{ id: 'name', name: 'name', value: config.name },
-		{ id: 'description', name: 'description', value: config.description },
-		{ id: 'mid', name: 'midi', value: config.mid },
-		{ id: 'type', name: 'type', value: config.type }
+		{ id: 'id', name: 'id', value: config.id ?? generate_id() },
+		{ id: 'name', name: 'name', value: config.name ?? 'new' },
+		{ id: 'description', name: 'description', value: config.description ?? '' },
+		{ id: 'mid', name: 'midi', value: config.mid ?? 0 },
+		{ id: 'scale', name: 'scale', value: config.scale ?? 1 },
+		{ id: 'type', name: 'type', value: config.type ?? ActionTypes.Trigger }
 	];
 </script>
 
@@ -55,7 +57,7 @@
 	<div class="flex flex-row w-[40%] mt-2">
 		<form action="?/remove" method="post">
 			<button type="submit" class="btn btn-error"> Remove </button>
-			<input type="text" name="mid" value={config.mid} hidden />
+			<input type="text" name="id" value={config.id} hidden />
 		</form>
 		<button type="submit" class="btn btn-primary"> Save </button>
 	</div>

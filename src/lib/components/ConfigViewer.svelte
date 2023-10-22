@@ -6,6 +6,7 @@
 		{ id: 'name', name: 'name', value: config.name },
 		{ id: 'description', name: 'description', value: config.description },
 		{ id: 'mid', name: 'midi', value: config.mid },
+		{ id: 'scale', name: 'scale', value: config.scale ?? 1 },
 		{ id: 'type', name: 'type', value: config.type }
 	];
 </script>

@@ -20,7 +20,6 @@ export class OscClient {
 	send(addr: string, msg: number) {
 		if (addr === '') return;
 		this.#client.send([addr, msg], () => {
-			console.log(`Sent osc message to ${this.#target} ${addr} ${msg}`);
 			this.close();
 		});
 	}

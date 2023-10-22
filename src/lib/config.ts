@@ -5,30 +5,19 @@ import {
 	LIGHT_GUY_IP,
 	OSC_SERVER_IP
 } from '$env/static/private';
-import { ActionTypes, OscTarget } from '$lib/types';
-import { log } from 'console';
+import { ActionTypes, OscTarget, generate_id } from '$lib/types';
 
 export const new_action = () => {
 	return {
 		id: generate_id(),
 		name: 'new',
-		type: ActionTypes.SendValue,
 		mid: 0,
+		scale: 1,
 		osc: [],
+		type: ActionTypes.SendValue,
 		description: ''
 	};
 };
-
-export function generate_id(length: number = 6): string {
-	let result = '';
-	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	const charactersLength = characters.length;
-	for (let i = 0; i < length; i++) {
-		result += characters.charAt(Math.floor(Math.random() * charactersLength));
-	}
-
-	return result;
-}
 
 export function get_target_ip(target: OscTarget): string {
 	switch (target) {

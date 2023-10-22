@@ -18,6 +18,7 @@ export type TAction = {
 	mid: number;
 	osc: { target: OscTarget; addr: string }[];
 	description: string;
+	scale: number;
 };
 
 export type TState = {
@@ -25,3 +26,14 @@ export type TState = {
 	midi: number;
 	strength: number;
 };
+
+export function generate_id(length: number = 6): string {
+	let result = '';
+	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	const charactersLength = characters.length;
+	for (let i = 0; i < length; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+
+	return result;
+}

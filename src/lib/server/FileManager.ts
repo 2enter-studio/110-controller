@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import type { TAction, TState } from '../types';
-import { generate_id } from '$lib/config';
+import { generate_id } from '$lib/types';
 
 const data_path = 'data';
 const config_path = [data_path, 'config.json'].join('/');
@@ -50,10 +50,10 @@ class FileManager {
 		fs.writeFileSync(config_path, JSON.stringify(current_config, null, 4));
 	}
 
-	remove_config_by_mid(mid: number) {
+	remove_config_by_mid(id: string) {
 		const current_state = this.get_config();
 		const new_config = current_state.filter((action: TAction) => {
-			return action.mid !== mid;
+			return action.id !== id;
 		});
 		console.log(new_config);
 		fs.writeFileSync(config_path, JSON.stringify(new_config, null, 4));

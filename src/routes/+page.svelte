@@ -8,7 +8,7 @@
 	let state: TState = {
 		midi: 0,
 		strength: 0,
-		count: 0
+		start: 0
 	};
 
 	let editing: string = '';
@@ -39,6 +39,9 @@
 				<p>Loading{'.'.repeat(loading_dot)}</p>
 			</div>
 		{:else}
+			<form action="?/create" method="post">
+				<button type="submit" class="btn btn-group float-right">Create New</button>
+			</form>
 			{#each configs as config}
 				<div class="flex flex-col items-end">
 					{#if config.id === editing}
@@ -51,9 +54,6 @@
 					{/if}
 				</div>
 			{/each}
-			<form action="?/create" method="post">
-				<button type="submit" class="btn btn-group float-right">Create New</button>
-			</form>
 		{/if}
 	</div>
 	<div
@@ -74,7 +74,7 @@
 			>
 				{state.midi}
 				<p class="text-xl w-[60vw] bg-black/80">
-					{description()}
+					{description() ?? '尚無效果'}
 				</p>
 			</div>
 		</div>

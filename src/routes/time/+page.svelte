@@ -29,9 +29,9 @@
 	};
 
 	const new_count_interval = () => {
-		const update_sec = 0.2;
+		const update_sec = 0.1;
 		return setInterval(() => {
-			second = (new Date().getTime() - init_time) / 1000;
+			second = ((new Date().getTime() - init_time) / 1000 + 1) % 3600;
 			if (second > max_second) second = 0;
 		}, update_sec * 1000);
 	};
@@ -52,7 +52,7 @@
 	<h1 class="text-[9rem] font-extrabold">
 		{get_formatted_time(second).min} : {get_formatted_time(second).sec}
 	</h1>
-	<div class="w-[90%] h-[8vh] bg-black mb-5 flex flex-row justify-start items-start">
+	<div class="w-[90%] h-[8vh] bg-black mb-1 flex flex-row justify-start items-start">
 		<div
 			class="bg-sky-100 h-full border-[1px] border-black"
 			style="width: {second / (max_second / 100)}%;"
