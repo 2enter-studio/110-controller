@@ -32,7 +32,7 @@
 <div class="flex flex-row">
 	<div class="flex flex-col w-[40vw] h-screen overflow-y-auto bg-black p-4 gap-3 join">
 		<DataFetcher endpoint={'/api/config'} bind:value={configs} name="Config" />
-		<DataFetcher endpoint={'/api/state'} bind:value={state} name="State" update_rate={10} />
+		<DataFetcher endpoint={'/api/state'} bind:value={state} name="State" update_rate={3} />
 
 		{#if configs === undefined}
 			<div class="flex w-full h-full justify-center items-center">
@@ -62,18 +62,20 @@
 	>
 		<div
 			class="text-white rounded-full border-2 border-dashed flex justify-center items-center"
-			style="width: {127 / 3 + 1}vh; height:{127 / 3 + 1}vh;"
+			style="width: {127 / 3 + 0.5}vh; height:{127 / 3 + 0.5}vh;"
 		>
 			<div
 				style="width: {state.strength / 3}vh; height: {state.strength / 3}vh"
 				class="{description()
-					? description().includes('調整')
-						? 'bg-red-500'
-						: 'bg-yellow-600'
+					? !description().includes('調整')
+						? 'bg-red-600 text-yellow-500'
+						: 'bg-yellow-600 text-red-600'
 					: 'bg-black'} flex flex-col justify-center items-center rounded-full"
 			>
-				{state.midi}
-				<p class="text-xl w-[60vw] bg-black/80">
+				<p class="font-extrabold">
+					{state.midi}
+				</p>
+				<p class="text-xl font-bold w-[60vw] bg-black/80">
 					{description() ?? '尚無效果'}
 				</p>
 			</div>

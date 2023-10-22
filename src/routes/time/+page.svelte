@@ -15,7 +15,6 @@
 	onMount(() => {
 		wait_interval = new_wait_interval();
 		count_interval = new_count_interval();
-		// console.log(new Date().getTime());
 	});
 
 	const new_wait_interval = () => {

@@ -25,16 +25,6 @@ class Action {
 	}
 }
 
-// export const actions = (): Action[] => {
-// 	const config = file_manager.get_config();
-// 	const actions = [];
-// 	for (const action_info of config) {
-// 		const action = new Action(action_info as TAction);
-// 		actions.push(action);
-// 	}
-// 	return actions;
-// };
-
 export let actions: Action[] = [];
 
 for (const action_info of config) {

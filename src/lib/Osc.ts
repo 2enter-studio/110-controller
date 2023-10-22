@@ -23,6 +23,7 @@ export class OscClient {
 			this.close();
 		});
 	}
+
 	close() {
 		this.#client.close();
 	}

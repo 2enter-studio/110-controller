@@ -9,20 +9,20 @@
 	let update_interval: NodeJS.Timeout;
 
 	onMount(() => {
-		update_interval = setInterval(async () => {
-			value = await fetch(endpoint).then((r) => r.json());
-			// console.log(value);
-		}, update_rate);
+		set_interval();
 	});
 
 	const change_update_rate = () => {
 		console.log(`change update rate to ${update_rate}ms`);
 		clearInterval(update_interval);
+		set_interval();
+	};
+
+	function set_interval() {
 		update_interval = setInterval(async () => {
 			value = await fetch(endpoint).then((r) => r.json());
-			// console.log(value);
 		}, update_rate);
-	};
+	}
 </script>
 
 <div class="bg-white/80 p-3 text-black">
@@ -32,8 +32,8 @@
 		type="range"
 		name="update_rate"
 		id="update_rate"
-		min="10"
-		max="1000"
+		min="1"
+		max="100"
 		bind:value={update_rate}
 		on:change={change_update_rate}
 	/>
