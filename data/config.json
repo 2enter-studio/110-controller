@@ -1,0 +1,692 @@
+[
+    {
+        "id": "kdA3kC",
+        "name": "master_value",
+        "type": "send_value",
+        "mid": 1,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": "/composition/master"
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/master"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "全部透明度調整"
+    },
+    {
+        "id": "CJfjAq",
+        "name": "stand_by",
+        "type": "trigger",
+        "mid": 40,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": "/composition/columns/7/connect"
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/columns/7/connect"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": "/hellohowareyou"
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "開始前紅畫面"
+    },
+    {
+        "id": "mF7oBA",
+        "name": "bg_alhpa",
+        "type": "send_value",
+        "mid": 21,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/1/video/opacity"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "後投影面透明度調整"
+    },
+    {
+        "id": "HjaQwu",
+        "name": "tri_alpha",
+        "type": "send_value",
+        "mid": 22,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/3/video/opacity"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "三角形透明度調整",
+        "scale": 0.5
+    },
+    {
+        "id": "RKKE2U",
+        "name": "colorize",
+        "type": "send_value",
+        "mid": 28,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/3/video/effects/colorize/opacity"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "三角形紅色調整",
+        "scale": 1
+    },
+    {
+        "id": "VtrOOG",
+        "name": "shut_down",
+        "type": "trigger",
+        "scale": 1,
+        "mid": 51,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": "/composition/disconnectall"
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/disconnectall"
+            },
+            {
+                "target": "max_msp",
+                "addr": "endd"
+            },
+            {
+                "target": "light_guy",
+                "addr": "/hellohowareyou"
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "結束"
+    },
+    {
+        "id": "soQIzp",
+        "name": "tri_1",
+        "type": "trigger",
+        "mid": 36,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/3/clips/2/connect"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "三角形(快換)"
+    },
+    {
+        "id": "cUUFlY",
+        "name": "tri_2",
+        "type": "trigger",
+        "scale": 1,
+        "mid": 37,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/3/clips/3/connect"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "三角形(爆閃)"
+    },
+    {
+        "id": "f3XBl6",
+        "name": "clost_all_tri",
+        "type": "trigger",
+        "mid": 47,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/3/clips/1/connect"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "取消所有三角形"
+    },
+    {
+        "id": "bXDr3H",
+        "name": "tri_3",
+        "type": "trigger",
+        "scale": 1,
+        "mid": 38,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/3/clips/4/connect"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "三角形(無特效)"
+    },
+    {
+        "id": "SbmD82",
+        "name": "tri_4",
+        "type": "trigger",
+        "scale": 1,
+        "mid": 39,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/3/clips/5/connect"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "三角形(慢換)"
+    },
+    {
+        "id": "dIzYA0",
+        "name": "shake",
+        "type": "send_value",
+        "mid": 27,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/2/clips/1/video/effects/fragment/effect/distance"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "ShAkEy sHaKeY",
+        "scale": 0.1
+    },
+    {
+        "id": "nwOTwa",
+        "name": "shakey",
+        "type": "send_value",
+        "mid": 27,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/4/clips/1/video/effects/fragment/effect/distance"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "ShAkEy sHaKeY",
+        "scale": 0.1
+    },
+    {
+        "id": "iTHAVH",
+        "name": "front_invert_r",
+        "type": "send_value",
+        "mid": 26,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/2/clips/1/video/effects/invertrgb/effect/r"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "色調翻轉調整"
+    },
+    {
+        "id": "6YcgjB",
+        "name": "front_invert_g",
+        "type": "send_value",
+        "mid": 26,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/2/clips/1/video/effects/invertrgb/effect/g"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "色調翻轉調整"
+    },
+    {
+        "id": "diogem",
+        "name": "front_invert_b",
+        "type": "send_value",
+        "mid": 26,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/2/clips/1/video/effects/invertrgb/effect/b"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "色調翻轉調整"
+    },
+    {
+        "id": "etOLxx",
+        "name": "back_invert_r",
+        "type": "send_value",
+        "scale": 1,
+        "mid": 26,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/1/clips/1/video/effects/invertrgb/effect/r"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "色調翻轉調整"
+    },
+    {
+        "id": "D8rD9n",
+        "name": "back_invert_g",
+        "type": "send_value",
+        "mid": 26,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/1/clips/1/video/effects/invertrgb/effect/g"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "色調翻轉調整"
+    },
+    {
+        "id": "rVuLZ0",
+        "name": "back_invert_b",
+        "type": "send_value",
+        "mid": 26,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/1/clips/1/video/effects/invertrgb/effect/b"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "色調翻轉調整"
+    },
+    {
+        "id": "7XBMwW",
+        "name": "noise",
+        "type": "trigger",
+        "scale": 1,
+        "mid": 44,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/3/clips/6/connect"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "超爆字特效"
+    },
+    {
+        "id": "tW1xBx",
+        "name": "start",
+        "type": "trigger",
+        "mid": 127,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": "/composition/columns/1/connect"
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/columns/1/connect"
+            },
+            {
+                "target": "max_msp",
+                "addr": "hello"
+            },
+            {
+                "target": "light_guy",
+                "addr": "/hellohowareyou"
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "開始表演!!!!!!!!!!!!!"
+    },
+    {
+        "id": "RGuhtJ",
+        "name": "cue_light",
+        "type": "trigger",
+        "mid": 50,
+        "scale": 1,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": ""
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": "/hellohowareyou"
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "Cue 燈光"
+    },
+    {
+        "id": "vEWcPX",
+        "name": "preset_speed",
+        "type": "send_value",
+        "mid": 23,
+        "osc": [
+            {
+                "target": "local_arena",
+                "addr": ""
+            },
+            {
+                "target": "next_arena",
+                "addr": "/composition/layers/2/clips/7/transport/position/behaviour/speed"
+            },
+            {
+                "target": "max_msp",
+                "addr": ""
+            },
+            {
+                "target": "light_guy",
+                "addr": ""
+            },
+            {
+                "target": "server",
+                "addr": ""
+            }
+        ],
+        "description": "紅畫面速度調整",
+        "scale": 1
+    }
+]
